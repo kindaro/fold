@@ -22,11 +22,11 @@ common commons
     , StandaloneKindSignatures
     , AllowAmbiguousTypes
     , ScopedTypeVariables
-  ghc-options: -Wpartial-type-signatures -fdefer-typed-holes
+  ghc-options: -Wpartial-type-signatures -fdefer-typed-holes -Wall -Wno-star-is-type -Wno-unticked-promoted-constructors
 
 library
   import: commons
-  exposed-modules: Fold
+  exposed-modules: Fold, Cata
 
 test-suite checks
   import: commons
