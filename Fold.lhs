@@ -1,7 +1,7 @@
 > module Fold where
 >
 > import qualified Prelude
-> import Prelude (($), flip)
+> import Prelude (($), flip, (+), Num)
 > import Prelude.Unicode ((∘))
 > import Data.Function (fix)
 
@@ -16,6 +16,9 @@ A definition of the right fold, for reference:
 >
 > map ∷ (α → β) → [α] → [β]
 > map f = foldr ((:) ∘ f) [ ]
+>
+> sum ∷ Num α ⇒ [α] → α
+> sum = foldr (+) 0
 
 
 So what is a left fold? There are two ways to define it.
