@@ -53,7 +53,17 @@ But how about `foldr1 const`?
       error, called at libraries/base/GHC/Err.hs:79:14 in base:GHC.Err
       undefined, called at <interactive>:34:22 in interactive:Ghci15
 
-An observable difference between `[1, undefined]` and `(1: undefined)` for you. And they say it is syntactic sugar.
+An observable difference between `[1, undefined]` and `(1: undefined)` for you. The difference is that:
+
+* `[1, undefined]` is a list of two elements, one of which is undefined. The list constructors themselves are defined all along.
+* `(1: undefined)` is a list of unknown length — the list constructors after the first one are undefined.
+
+So, the conclusion is that `foldr` forces the second link even though it does not need to. Some more examples to confirm this:
+
+    λ foldr1 const (1: undefined: undefined)
+    1
+    λ foldr1 const (1: [ ])
+    1
 
 For a longer list, everything works smoothly, so `foldr` is still mostly lazy.
 
