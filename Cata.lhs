@@ -67,8 +67,10 @@ We should be able to get the same via a catamorphose, but it does not type check
 
 Also, this instance does not pass.
 
-< instance Base.IsList (List ( )) where
-<   type Item (List α) = α
+< instance ((Σ Δ₁ ∘ Π α) ~ f α) ⇒ Base.IsList (Y (f α)) where
+<   type Item (Y (f α)) = α
+<   toList = toList
+<   fromList = fromList
 
 This one gives errors too.
 
