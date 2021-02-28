@@ -60,7 +60,7 @@ Here is a witness of the isomorphose.
 We should be able to get the same via a catamorphose, but it does not type check.
 
 < toList' ∷ forall α. List α → [α]
-< toList' = cata' (Prelude.fmap ∘ Prelude.fmap) f
+< toList' = cata (Prelude.fmap ∘ Prelude.fmap) f
 <   where
 <     f ∷ (Σ Δ₁ ∘ Π [α]) [α] → [α]
 <     f x = f x
